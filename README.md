@@ -3,20 +3,19 @@ ArbReals
 
 #### stuff is in the wiki and on gitter
 ```  
-
 ```
 
 
 
 ######real intervals with floating point bounds (uses the Arb library)
 
-[to gitter](https://gitter.im/JuliaArbTypes/ArbReals.jl)
 
 ######&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To participate, email [a moderator](https://github.com/JuliaArbTypes).  
-
+  
+    
+[to gitter](https://gitter.im/JuliaArbTypes/ArbReals.jl)  
   
   
-
 >>  __visit the [Wiki](https://github.com/JuliaArbTypes/ArbReals.jl/wiki) to see current todos/thoughts/perspecitves__    
 >>
 >>  __&nbsp;&nbsp;&nbsp;&nbsp;and to use the whiteboards -- participate to edit them__ 
