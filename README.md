@@ -1,7 +1,7 @@
 ArbReals
 ========
 
-#### stuff is in the wiki and on gitter
+#### stuff is in [the wiki](https://github.com/JuliaArbTypes/ArbReals.jl/wiki) and [on gitter](https://gitter.im/JuliaArbTypes/ArbReals.jl)
 ```  
 ```
 
