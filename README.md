@@ -6,7 +6,7 @@ ArbReals
 
 ```
 
-[![Join the chat at https://gitter.im/JuliaArbTypes/ArbReals.jl](https://badges.gitter.im/JuliaArbTypes/ArbReals.jl.svg)](https://gitter.im/JuliaArbTypes/ArbReals.jl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[on gitter](https://gitter.im/JuliaArbTypes/ArbReals.jl)
 
 ######real intervals with floating point bounds (uses the Arb library)
 
