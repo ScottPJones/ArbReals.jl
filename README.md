@@ -18,7 +18,7 @@ ArbReals
 >>  __visit the [Wiki](https://github.com/JuliaArbTypes/ArbReals.jl/wiki) to see current todos/thoughts/perspecitves__    
 >>  __&nbsp;&nbsp;&nbsp;&nbsp;and to use the whiteboards -- participate to edit them__  
   
->>>  [__on gitter__](https://gitter.im/JuliaArbTypes/ArbReals.jl)  
+>>>>  [__on gitter__](https://gitter.im/JuliaArbTypes/ArbReals.jl)  
    
   
 
