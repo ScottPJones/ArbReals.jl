@@ -1,6 +1,11 @@
 ArbReals
 ========
 
+#### stuff is in the wiki and on gitter
+```  
+
+```
+
 [![Join the chat at https://gitter.im/JuliaArbTypes/ArbReals.jl](https://badges.gitter.im/JuliaArbTypes/ArbReals.jl.svg)](https://gitter.im/JuliaArbTypes/ArbReals.jl?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ######real intervals with floating point bounds (uses the Arb library)
@@ -13,8 +18,9 @@ ArbReals
 
 >>  __visit the [Wiki](https://github.com/JuliaArbTypes/ArbReals.jl/wiki) to see current todos/thoughts/perspecitves__    
 >>
->>  __and to use the whiteboards, participants are editors__ 
-
+>>  __&nbsp;&nbsp;&nbsp;&nbsp;and to use the whiteboards -- participate to edit them__ 
+  
+  
 
 *****
 
