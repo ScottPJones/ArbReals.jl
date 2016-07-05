@@ -4,10 +4,12 @@
    see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/mag.jl)
 =#
 
+#=
 type ArbMag
     exponent::Int
     mantissa::UInt64
 end
+=#
 
 ArbMag{T<:Union{Int64,Int32}}(exponent::Int, mantissa::T) =
     ArbMag(exponent, mantissa % UInt64)
@@ -68,7 +70,7 @@ end
 for T in (:UInt128, :UInt32, :UInt16, :UInt8)
     @eval convertHi(::Type{ArbMag}, x::($T)) = convertHi(ArbMag, convert(UInt64, x))
     @eval convertLo(::Type{ArbMag}, x::($T)) = convertLo(ArbMag, convert(UInt64, x))
-end    
+end
 
 function convert(::Type{ArbMag}, x::Int64)
     signbit(x) && Error_MagIsNegative()
@@ -76,7 +78,7 @@ function convert(::Type{ArbMag}, x::Int64)
 end
 for T in (:Int128, :Int32, :Int16, :Int8)
     @eval convert(::Type{ArbMag}, x::($T))  = convert(ArbMag, convert(Int64, x))
-end    
+end
 
 
 

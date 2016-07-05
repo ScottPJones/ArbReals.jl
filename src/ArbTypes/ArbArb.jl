@@ -4,7 +4,7 @@
    see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arb2.jl)
 =#
 
-
+#=
 # parameter P is the precision in bits
 type ArbArb{P}
     exponent::Int
@@ -14,6 +14,7 @@ type ArbArb{P}
     radiusExp::Int
     radiusMan::UInt64
 end
+=#
 
 # working precision for Arb
 const ArbArbPrecision = [116,]

@@ -4,6 +4,7 @@
    see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arf.jl)
 =#
 
+#=
 # parameter P is the precision in bits
 type ArbArf{P}
     exponent::Int
@@ -11,6 +12,7 @@ type ArbArf{P}
     mantissa1::Int64
     mantissa2::Int64
 end
+=#
 
 # working precision for ArbArf
 # set indirectly through setprecision(Arb, n)
