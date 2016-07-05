@@ -53,11 +53,7 @@ const ArfRoundNearest = Int32(4)
 
 # conversions
 
-function convert{P}(::Type{BigFloat}, x::ArbArf{P})
-    z = zero(BigFloat)
-    ccall(@libarb(arf_get_mpfr), Void, (Ptr{BigFloat}, Ptr{ArbArf{P}}), &z, &x)
-    return z
-end
+# convert to ArbArf
 
 function convert{P}(::Type{ArbArf{P}}, x::BigFloat)
     z = init(ArbArf{P})
@@ -101,6 +97,14 @@ function convert{P}(::Type{ArbArf{P}}, x::ArbMag)
     return z
 end
 convert(::Type{ArbArf}, x::ArbMag) = convert(ArbArf{precision(ArbArf)}, x)
+
+# convert from ArbArf
+
+function convert{P}(::Type{BigFloat}, x::ArbArf{P})
+    z = zero(BigFloat)
+    ccall(@libarb(arf_get_mpfr), Void, (Ptr{BigFloat}, Ptr{ArbArf{P}}), &z, &x)
+    return z
+end
 
 function convert{P}(::Type{ArbMag}, x::ArbArf{P})
     z = init(ArbMag)
