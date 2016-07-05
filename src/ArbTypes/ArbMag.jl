@@ -39,27 +39,46 @@ end
 
 # convert to ArbMag
 
+Error_MagIsNegative() = throw(ErrorException("Magnitudes must be nonnegative."))
+
 function convert(::Type{ArbMag}, x::Float64)
+    signbit(x) && Error_MagIsNegative()
     z = ArbMag()
     ccall(@libarb(mag_set_d), Void, (Ptr{ArbMag}, Ptr{Float64}), &z, &x)
     return z
 end
-function convert(::Type{ArbMag}, x::Float32)
-    return convert(ArbMag, convert(Float64, x))
-end
+convert(::Type{ArbMag}, x::Float32) = convert(ArbMag, convert(Float64, x))
+convert(::Type{ArbMag}, x::Float16) = convert(ArbMag, convert(Float64, x))
 
-function convert(::Type{ArbMag}, x::Int)
-    if x < 0
-        throw(ErrorException("Arb magnitudes must be nonnegative"))
-    end
-    return convert(ArbMag, convert(UInt,x))
-end
+#=
+   convertHi returns upper bound of value
+   convertLo returns lower bound of value
+=#
 
-function convert(::Type{ArbMag}, x::UInt)
+function convertHi(::Type{ArbMag}, x::UInt64)
     z = ArbMag()
-    ccall(@libarb(mag_set_ui), Void, (Ptr{ArbMag}, Ptr{UInt}), &z, &x)
+    ccall(@libarb(mag_set_ui), Void, (Ptr{ArbMag}, Ptr{UInt64}), &z, &x)
     return z
 end
+function convertLo(::Type{ArbMag}, x::UInt64)
+    z = ArbMag()
+    ccall(@libarb(mag_set_ui_lower), Void, (Ptr{ArbMag}, Ptr{UInt64}), &z, &x)
+    return z
+end
+for T in (:UInt128, :UInt32, :UInt16, :UInt8)
+    @eval convertHi(::Type{ArbMag}, x::($T)) = convertHi(ArbMag, convert(UInt64, x))
+    @eval convertLo(::Type{ArbMag}, x::($T)) = convertLo(ArbMag, convert(UInt64, x))
+end    
+
+function convert(::Type{ArbMag}, x::Int64)
+    signbit(x) && Error_MagIsNegative()
+    return convert(ArbMag, reinterpret(UInt64, x))
+end
+for T in (:Int128, :Int32, :Int16, :Int8)
+    @eval convert(::Type{ArbMag}, x::($T))  = convert(ArbMag, convert(Int64, x))
+end    
+
+
 
 #convert from ArbMag
 
