@@ -112,8 +112,8 @@ function midpoint_radius{P}(midpoint::ArbArf{P}, radius::ArbMag)
     z.size      = midpoint.size
     z.mantissa1 = midpoint.mantissa1
     z.mantissa2 = midpoint.mantissa2
-    z.radiusExp = radius.exponent
-    z.radiusMan = radius.mantissa
+    z.radiusExp = radius.radiusExp
+    z.radiusMan = radius.radiusMan
     return z
 end
 

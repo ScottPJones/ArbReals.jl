@@ -4,8 +4,8 @@
 
 
 type ArbMag
-    exponent::Int
-    mantissa::UInt64
+    radiusExp::Int
+    radiusMan::UInt64
 end
 
 

@@ -6,13 +6,13 @@
 
 #=
 type ArbMag
-    exponent::Int
-    mantissa::UInt64
+    radiusExp::Int
+    radiusMan::UInt64
 end
 =#
 
-ArbMag{T<:Union{Int64,Int32}}(exponent::Int, mantissa::T) =
-    ArbMag(exponent, mantissa % UInt64)
+ArbMag{T<:Union{Int64,Int32}}(radiusExp::Int, radiusMan::T) =
+    ArbMag(radiusExp, radiusMan % UInt64)
 
 function release{T<:ArbMag}(x::T)
     ccall(@libarb(mag_clear), Void, (Ptr{T}, ), &x)
@@ -32,9 +32,9 @@ ArbMag() = init(ArbMag)
 const hash_arbmag_lo = (UInt === UInt64) ? 0x29f934c433d9a758 : 0x2578e2ce
 const hash_0_arbmag_lo = hash(zero(UInt), hash_arbmag_lo)
 if UInt===UInt64
-   hash(z::ArbMag, h::UInt) = hash( reinterpret(UInt64, z.exponent), z.mantissa )
+   hash(z::ArbMag, h::UInt) = hash( reinterpret(UInt64, z.radiusExp), z.radiusMan )
 else
-   hash(z::ArbMag, h::UInt) = hash( reinterpret(UInt32, z.exponent) % UInt64, z.mantissa )
+   hash(z::ArbMag, h::UInt) = hash( reinterpret(UInt32, z.radiusExp) % UInt64, z.radiusMan )
 end
 
 # conversions
