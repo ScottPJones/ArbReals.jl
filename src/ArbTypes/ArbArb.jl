@@ -126,14 +126,7 @@ end
 
 # conversions
 
-function convert{P}(::Type{ArbArf{P}}, x::ArbArb{P})
-    z = init(ArbArf{P})
-    z.exponent  = x.exponent
-    z.size      = x.size
-    z.mantissa1 = x.mantissa1
-    z.mantissa2 = x.mantissa2
-    return z
-end
+# convert to ArbArb
 
 function convert{P}(::Type{ArbArb{P}}, x::ArbArf{P})
     z = init(ArbArb{P})
@@ -143,6 +136,18 @@ function convert{P}(::Type{ArbArb{P}}, x::ArbArf{P})
     z.mantissa2 = x.mantissa2
     return z
 end
+
+# convert from ArbArb
+
+function convert{P}(::Type{ArbArf{P}}, x::ArbArb{P})
+    z = init(ArbArf{P})
+    z.exponent  = x.exponent
+    z.size      = x.size
+    z.mantissa1 = x.mantissa1
+    z.mantissa2 = x.mantissa2
+    return z
+end
+
 
 
 #interconvert ArbArb{P} with ArbArb{Q}
