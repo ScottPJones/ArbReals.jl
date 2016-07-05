@@ -37,15 +37,7 @@ end
 
 # conversions
 
-function convert(::Type{Float64}, x::ArbMag)
-    z = ccall(@libarb(mag_get_d), Float64, (Ptr{ArbMag}, ), &x)
-    return z
-end
-function convert(::Type{Float32}, x::ArbMag)
-    z = convert(Float64, x)
-    convert(Float32, z)
-    return z
-end
+# convert to ArbMag
 
 function convert(::Type{ArbMag}, x::Float64)
     z = ArbMag()
@@ -56,17 +48,31 @@ function convert(::Type{ArbMag}, x::Float32)
     return convert(ArbMag, convert(Float64, x))
 end
 
-function convert(::Type{ArbMag}, x::UInt)
-    z = ArbMag()
-    ccall(@libarb(mag_set_ui), Void, (Ptr{ArbMag}, Ptr{UInt}), &z, &x)
-    return z
-end
 function convert(::Type{ArbMag}, x::Int)
     if x < 0
         throw(ErrorException("Arb magnitudes must be nonnegative"))
     end
     return convert(ArbMag, convert(UInt,x))
 end
+
+function convert(::Type{ArbMag}, x::UInt)
+    z = ArbMag()
+    ccall(@libarb(mag_set_ui), Void, (Ptr{ArbMag}, Ptr{UInt}), &z, &x)
+    return z
+end
+
+#convert from ArbMag
+
+function convert(::Type{Float64}, x::ArbMag)
+    z = ccall(@libarb(mag_get_d), Float64, (Ptr{ArbMag}, ), &x)
+    return z
+end
+function convert(::Type{Float32}, x::ArbMag)
+    z = convert(Float64, x)
+    convert(Float32, z)
+    return z
+end
+
 
 # promotions
 
