@@ -41,6 +41,7 @@ include("MetaType/metatypes.jl")
 
 include("NemoLibs.jl")  # ensure needed C libraries
 
+include("ArbTypes/ArbCstructs.jl")
 include("ArbTypes/ArbMag.jl")
 include("ArbTypes/ArbArf.jl")
 include("ArbTypes/ArbArb.jl")
