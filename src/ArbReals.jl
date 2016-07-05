@@ -32,6 +32,12 @@ export stringcompact,
     rgamma, doublefactorial, risingfactorial,
     polylog, agm
 
+metatype_file = string(Pkg.dir("ArbReals"),"/src/MetaType/metatypes.jl"))
+if !isfile(metatype_file) || filesize(metatype_file) == 0
+    include("MetaType/protogenesis.jl")
+    protogenerate(metatype_file)
+end
+include("MetaType/metatypes.jl")
 
 include("NemoLibs.jl")  # ensure needed C libraries
 
