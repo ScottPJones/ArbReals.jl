@@ -14,8 +14,8 @@ end
 type ArbArf{P}
     exponent ::Int
     size     ::UInt64
-    mantissa1::Int64
-    mantissa2::Int64
+    mantissa1::UInt64
+    mantissa2::UInt64
 end
 
 
@@ -24,8 +24,8 @@ end
 type ArbArb{P}              ##     ArbArf{P}
     exponent ::Int          ##        exponent
     size     ::UInt64       ##        size
-    mantissa1::Int64        ##        mantissa1
-    mantissa2::Int64        ##        mantissa2
+    mantissa1::UInt64       ##        mantissa1
+    mantissa2::UInt64       ##        mantissa2
                             ###    ArbMag{P}
     radiusExp::Int          ####      radiusExp
     radiusMan::UInt64       ####      radiusMan
