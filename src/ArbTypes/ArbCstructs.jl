@@ -10,6 +10,37 @@
    see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arb.jl)
 =#
 
+
+
+type ArbMag
+    radiusExp::Int
+    radiusMan::UInt64
+end
+
+    #       P is the precision in bits as a parameter
+    # 
+type ArbArf{P}
+    exponent ::Int
+    size     ::UInt64
+    mantissa1::Int64
+    mantissa2::Int64
+end
+
+
+    #       P is the precision in bits as a parameter
+    # 
+type ArbArb{P}              ##     ArbArf{P}
+    exponent ::Int          ##        exponent
+    size     ::UInt64       ##        size
+    mantissa1::Int64        ##        mantissa1
+    mantissa2::Int64        ##        mantissa2
+                            ###    ArbMag{P}
+    radiusExp::Int          ####      radiusExp
+    radiusMan::UInt64       ####      radiusMan
+end
+
+#= ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: =#
+
 #=
    The two mantissa fields in ArbArf, mantissa1 and mantissa2, are 64bit types
       that cover the second part of the arf struct from the Arb C library.
@@ -78,11 +109,6 @@ mantissa_ptr_struct;
       
 =#
 
-type ArbMag
-    radiusExp::Int
-    radiusMan::UInt64
-end
-
 #=
     "An arf_struct contains four words: 
        an fmpz exponent (exp), 
@@ -97,22 +123,3 @@ end
           no space outside of the arf_struct is used."
     -- http://fredrikj.net/arb/arf.html?highlight=arf_struct      
 =#
-
-# parameter P is the precision in bits
-type ArbArf{P}
-    exponent::Int
-    size::UInt64
-    mantissa1::Int64
-    mantissa2::Int64
-end
-
-
-# parameter P is the precision in bits
-type ArbArb{P}
-    exponent::Int
-    size::UInt64
-    mantissa1::Int64
-    mantissa2::Int64
-    radiusExp::Int
-    radiusMan::UInt64
-end
