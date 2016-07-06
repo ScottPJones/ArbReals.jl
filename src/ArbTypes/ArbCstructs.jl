@@ -6,16 +6,16 @@
 
 type ArbMag
     radiusExp::Int
-    radiusMan::UInt64
+    radiusMan::UInt         ## radius is unsigned (nonnegative), by definition
 end
 
     #       P is the precision in bits as a parameter
     # 
 type ArbArf{P}
     exponent ::Int
-    size     ::UInt64
-    mantissa1::UInt64
-    mantissa2::UInt64
+    words_sgn::Int          ## Int, as words is an offset; lsb holds sign of mantissa
+    mantissa1::UInt         ## UInt, as each mantissa word is a subspan of mantissa
+    mantissa2::UInt         ##   the mantissa words are unsigned (sign is in words_sgn)
 end
 
 
@@ -23,12 +23,12 @@ end
     # 
 type ArbArb{P}              ##     ArbArf{P}
     exponent ::Int          ##        exponent
-    size     ::UInt64       ##        size
-    mantissa1::UInt64       ##        mantissa1
-    mantissa2::UInt64       ##        mantissa2
+    words_sgn::Int          ##        words_sgn
+    mantissa1::UInt         ##        mantissa1
+    mantissa2::UInt         ##        mantissa2
                             ###    ArbMag{P}
     radiusExp::Int          ####      radiusExp
-    radiusMan::UInt64       ####      radiusMan
+    radiusMan::UInt         ####      radiusMan
 end
 
 #= ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: =#
