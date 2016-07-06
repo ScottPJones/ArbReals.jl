@@ -1,15 +1,7 @@
 #=
-    types that mirror the memory layout of C structs used in Arb
-    
-   The mag type used by Arb (fredrikj.net/arb/mag.html)
-   The arf type used by Arb (fredrikj.net/arb/arf.html)
-   The arb type used by Arb (fredrikj.net/arb/arb.html)
-   see also (https://github.com/Nemocas/Nemo.jl/blob/master/src/arb/ArbTypes.jl)
-   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/mag.jl)
-   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arf.jl)
-   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arb.jl)
+    types that mirror the layout used in Arb
+        for the mag, arf, and arb structs
 =#
-
 
 
 type ArbMag
@@ -40,6 +32,19 @@ type ArbArb{P}              ##     ArbArf{P}
 end
 
 #= ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: =#
+
+#=
+   The mag type used by Arb (fredrikj.net/arb/mag.html)
+   The arf type used by Arb (fredrikj.net/arb/arf.html)
+   The arb type used by Arb (fredrikj.net/arb/arb.html)
+   see also (https://github.com/Nemocas/Nemo.jl/blob/master/src/arb/ArbTypes.jl)
+   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/mag.jl)
+   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arf.jl)
+   see also (https://github.com/thofma/Hecke.jl/blob/master/src/Misc/arb.jl)
+=#
+
+#= ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: =#
+
 
 #=
    The two mantissa fields in ArbArf, mantissa1 and mantissa2, are 64bit types
