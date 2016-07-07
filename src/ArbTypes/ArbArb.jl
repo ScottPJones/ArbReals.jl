@@ -131,12 +131,59 @@ end
 
 function convert{P}(::Type{ArbArb{P}}, x::ArbArf{P})
     z = init(ArbArb{P})
-    z.exponent  = x.exponent
-    z.size      = x.size
-    z.mantissa1 = x.mantissa1
-    z.mantissa2 = x.mantissa2
+    ccall(@libarb(arb_set_arf), Void, (Ptr{ArbArb{P}}, Ptr{ArbArf{P}), &z, &x)
     return z
 end
+
+function convert{P}(::Type{ArbArb{P}}, x::BigFloat)
+    z = init(ArbArb{P})
+    w = init(ArbArf{P})
+    ccall(@libarb(arf_set_mpfr), Void, (Ptr{ArbArf{P}}, Ptr{BigFloat}), &w, &x)
+    ccall(@libarb(arb_set_arf), Void, (Ptr{ArbArb{P}}, Ptr{ArbArf{P}), &z, &x)
+    return z
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::BigInt)
+    return convert(::TypeArbArb{P}, convert(BigFloat, x))
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::Int128)
+    return convert(::TypeArbArb{P}, convert(BigFloat, x))
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::Rational{BigInt})
+    n = convert(ArbArb{2P}, x.num)
+    d = convert(ArbArb{2P}, x.den)
+    q = n/d
+    z = convert(ArbArb{P}, q)
+    return z
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::Float64)
+    z = init(ArbArb{P})
+    ccall(@libarb(arb_set_d), Void, (Ptr{ArbArb{P}}, Ptr{Float64), &z, &x)
+    return z
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::UInt64)
+    z = init(ArbArb{P})
+    ccall(@libarb(arb_set_ui), Void, (Ptr{ArbArb{P}}, Ptr{UInt64), &z, &x)
+    return z
+end
+
+function convert{P}(::Type{ArbArb{P}}, x::Int64)
+    z = init(ArbArb{P})
+    ccall(@libarb(arb_set_si), Void, (Ptr{ArbArb{P}}, Ptr{Int64), &z, &x)
+    return z
+end
+
+for (T1,T2) in ((:Float16, :Float64), (:Float32, :Float64), 
+                (:Int16, :Int64), (:Int32, :Int64),
+                (:UInt16, :UInt64), (:UInt32, :UInt64))
+  @eval convert{P}(::Type{ArbArb{P}, x::($T1)) = convert(ArbArb{P}, convert($T2, x))
+end
+
+
 
 # convert from ArbArb
 
