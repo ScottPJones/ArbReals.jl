@@ -6,7 +6,6 @@ ArbReals
 
 #### current flows<sup> 1</sup>&nbsp; are in [the wiki](https://github.com/JuliaArbTypes/ArbReals.jl/wiki) and [on gitter](https://gitter.im/JuliaArbTypes/ArbReals.jl)
 ***   
-<sup> 1</sup>quantum of current flow: 7.445e-80 m<sup>.</sup>s
 ```  
 ```
 
